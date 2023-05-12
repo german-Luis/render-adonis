@@ -19,6 +19,10 @@ class AuthController {
         const token = await auth.attempt(email, password)
         return response.json(token)
     }
+    async logout ({ auth, response }) {
+        await auth.logout()
+        return response.redirect('/')
+      }
 }
 
 module.exports = AuthController

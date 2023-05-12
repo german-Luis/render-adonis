@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hola</title>
+  </head>
+  <body>
+    <h1>Hola</h1>
+  @if (user)
+    <h1>Hola, {{ user.username }} ✋</h1>
+  @else
+    <p>No haz iniciado sesión 💔</p>
+  @endif
+  </body>
+</html>

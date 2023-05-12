@@ -15,5 +15,9 @@
       <br>
       <input type="submit" value="Iniciar sesión">
     </form>
+    <form action="/logout" method="post">
+        {{ csrfField() }}
+        <button type="submit">Logout</button>
+    </form>
   </body>
 </html>
