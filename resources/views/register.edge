@@ -33,6 +33,12 @@
     @if(hasErrorFor('password'))
     <err>{{ getErrorFor('password') }}</err><br>
     @endif
+    
+    <label for="password1">Contraseña:</label><br>
+    <input type="password" id="password1" name="password1"><br>
+    @if(hasErrorFor('password1'))
+    <err>{{ getErrorFor('password1') }}</err><br>
+    @endif
 
     <input type="submit" value="Registrarse">
   </form>

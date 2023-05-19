@@ -10,7 +10,7 @@ class AuthController {
         return view.render('login')
     }
     async register({ request, response }) {
-        const userData = request.only(['username', 'email', 'password'])
+        const userData = request.only(['username', 'email', 'password','password1'])
         const user = await User.create(userData)
         return response.json(user)
     }
@@ -27,7 +27,8 @@ class AuthController {
         const rules = {
             username: 'required|unique:users,username',
             email: 'required|email|unique:users,email',
-            password: 'required'
+            password: 'required',
+            password1: 'required'
         }
         const messages = {
             'username.required': 'El campo nombre de usuario es obligatorio.',
@@ -35,7 +36,8 @@ class AuthController {
             'username.unique': 'El nombre de usuario ya está ocupado.',
             'email.unique': 'El correo electrónico ya está ocupado.',
             'email.email': 'El campo correo electrónico debe ser una dirección de correo válida.',
-            'password.required': 'El campo contraseña es obligatorio.'
+            'password.required': 'El campo contraseña es obligatorio.',
+            'password1.required': 'El campo contraseña es obligatorio.'
         }
         const validation = await validate(request.all(), rules, messages)
         if (validation.fails()) {
@@ -44,7 +46,7 @@ class AuthController {
                 .flashExcept(['password'])
             return response.redirect('back')
         }
-        const userData = request.only(['username', 'email', 'password'])
+        const userData = request.only(['username', 'email', 'password',"password1"])
         await User.create(userData)
         return response.redirect('/login')
     }
